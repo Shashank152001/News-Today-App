@@ -1,0 +1,36 @@
+<div class="header-div">
+  <div class="logo-div">
+    <p class="logo">News Todays</p>
+  </div>
+  <div class="search-btn">
+    <div class="input-div">
+      <input class="p-2" placeholder="Search..." [(ngModel)]="filterText" type="text">
+    </div>
+    <div class="icon-div">
+      <button (click)="passFilterText()" class="icon-btn">
+        <i class="fa-solid fa-magnifying-glass"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<div class="sub-header p-1">
+  <div class="container-fluid">
+    <div class="row text-center">
+      <div class="col-md-10 navbar">
+        <ul>
+          <li><a (click)="fetchApiByKeyWord('Business')" class="me-4 p-2">Business</a></li>
+          <li><a (click)="fetchApiByKeyWord('Technology')" class="me-4 p-2">Technology</a></li>
+          <li><a (click)="fetchApiByKeyWord('Health')" class="me-4 p-2">Health</a></li>
+          <li><a (click)="fetchApiByKeyWord('Politics')" class="me-4 p-2">Politics</a></li>
+          <li><a (click)="fetchApiByKeyWord('Sports')" class="p-2">Sports</a></li>
+        </ul>
+      </div>
+      <div [formGroup]="dropdownGroup" class="col-md-2 pt-2 mt-1">
+        <ng-select formControlName="dropdown" (change)="onChange($event)">
+          <ng-option *ngFor="let data of country" [value]="data.country_code">{{data.country_name}}</ng-option>
+        </ng-select>
+      </div>
+    </div>
+  </div>
+</div>
